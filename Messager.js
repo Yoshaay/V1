@@ -71,17 +71,17 @@ class Messager extends HTMLElement {
         console.log("Größe" + screenWidth);
         //Laptop
         if (screenWidth >= 786) {
-            cssPath = 'style.css';
+            cssPath = 'https://schmalgsicht.de/wp-content/plugins/SG_Message/style.css';
             console.log("Groß");
         }
         //Tablet
         else if (screenWidth > 360) {
-            cssPath = 'style.css';
+            cssPath = 'https://schmalgsicht.de/wp-content/plugins/SG_Message/style.css';
             console.log("Mittel");
         }
         //Handy
         else {
-            cssPath = 'style.css';
+            cssPath = 'https://schmalgsicht.de/wp-content/plugins/SG_Message/style.css';
             console.log("Klein");
         }
         

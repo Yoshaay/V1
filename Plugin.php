@@ -2,7 +2,7 @@
 	/*
 	Plugin Name: SchmalMessage
 	Description: Hörende schicken uns Nachrichten und Chris & Lena lesen diese vor
-	Version: 1.0.0
+	Version: 1.1.2
 	Author: Yoshy
 	*/
 	
