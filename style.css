@@ -10,25 +10,7 @@
 	border-radius: 100px;
 	background-color: white;
 	transition: width .3s ease-in;
-}
-
-/*Wird aufgerufen, wenn die Box schrumpfen soll*/
-.schrumpf {
-	width: 7% !important;
-}
-
-.schrumpfback {
-	min-width: 25rem;
-	width: 50% !important;
-}
-
-/*Schriftinput entfernen*/
-.weg {
-	display: none;
-}
-
-.wegweg {
-	display: block;
+	align-items: stretch;
 }
 
 #messagebox:focus-within {
@@ -41,18 +23,15 @@
 	-moz-appearance: none;
 	appearance: none;
 	text-align: center;
-	flex-grow:2;
+	flex-grow: 2;
 	font-size: 20px;
 	font-family: "Poppins", sans-serif;
 	font-weight: 300;
 	font-style: normal;
 	border: none;
 	background-color: transparent;
-	
 	color: hsl(219, 54%, 57%);
 }
-
-
 
 #message::placeholder {
 	opacity: 1; /* Firefox */
@@ -72,5 +51,30 @@
 
 #submit:hover {
 	opacity: 0.7;
+}
+
+#load {
+	cursor: none;
+	display: none;
+}
+
+/*Box schrumpft*/
+.schrumpf {
+	width: 7% !important;
+}
+/*Box wird wieder groß*/
+.schrumpfback {
+	min-width: 25rem;
+	width: 50% !important;
+}
+
+/*Schriftinput entfernen*/
+.weg {
+	display: none;
+}
+
+/*Schriftinput wiederherstellen*/
+.wegweg {
+	display: block;
 }
 	

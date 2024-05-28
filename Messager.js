@@ -3,9 +3,12 @@ class Messager extends HTMLElement {
     //Variablen erstellen
     button = null;
     textbox = null;
+    messagediv = null;
+    shadowR = null;
+    loading = null;
     messagearray = [];
     lastmess = "yoshy";
-    sentSVG = `<svg version="1.1" id="L4" width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0">
+    sentSVG = `<svg version="1.1" id="L4" width="40px" height="40px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0">
     <circle fill="#547fce" stroke="none" cx="6" cy="50" r="6">
         <animate
             attributeName="opacity"
@@ -32,8 +35,7 @@ class Messager extends HTMLElement {
     </circle>
 </svg>`;
     pfeilSVG = `<svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#567fcd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>`;
-    messagediv = null;
-    shadowR = null;
+    
     
     // The browser calls this method when the element is added to the DOM.
     constructor(){
@@ -53,6 +55,7 @@ class Messager extends HTMLElement {
     initControls(shadowRoot){
         this.button = shadowRoot.getElementById('submit');
         this.textbox = shadowRoot.getElementById('message');
+        this.loading = shadowRoot.getElementById('load');
         if (this.button === undefined || this.textbox === undefined) {
             console.log('NICHT GELADEN');
         }
@@ -157,7 +160,6 @@ class Messager extends HTMLElement {
         {
             console.log("Kein Inhalt");
         }
-        //const arrayString = JSON.stringify(rel.messagearray);
     }
     
     //Array leeren
@@ -166,13 +168,14 @@ class Messager extends HTMLElement {
         console.log("Array gelöscht");
     }
     
-    //Zeile leeren
+    //Zeile leeren und SVG anzeigen
     setGesendet(rel) {
         //Textbox leeren
         rel.textbox.value = "";
-        rel.textbox.placeholder = "";
-        rel.textbox.classList.add('weg');
-        
+        rel.textbox.placeholder = "Danke für deine Nachricht!";
+        rel.loading.style.display ="block";
+        rel.button.style.display = "none";
+
         /*
         //Container schrumpfen
         rel.messagediv.style.minWidth = "10px";
@@ -184,15 +187,18 @@ class Messager extends HTMLElement {
         rel.button.style.pointerEvents = "none";
         */
         
+        //Nach 3 Sekunden wieder Normalzustand herstellen
         setTimeout(function() {
-            rel.messagediv.classList.add('schrumpfback');
-            rel.textbox.classList.add('wegweg');
+            //rel.messagediv.classList.add('schrumpfback');
+            //rel.textbox.classList.add('wegweg');
+            //rel.button.innerHTML = rel.pfeilSVG;
+            //rel.button.style.pointerEvents = "auto";
             rel.textbox.placeholder = "Deine Nachricht an Chris & Lena";
-            rel.button.innerHTML = rel.pfeilSVG;
-            rel.button.style.pointerEvents = "auto";
+            rel.loading.style.display ="none";
+            rel.button.style.display = "block";
             rel.loadCSS(rel.shadowR);
-            console.log("Fertig");
-        }, 3000);
+            //console.log("Fertig");
+        }, 4000);
         
     }
     
@@ -206,8 +212,33 @@ class Messager extends HTMLElement {
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
             <input id="message" type="text" placeholder="Deine Nachricht an Chris & Lena"/>
+                 <svg id="load" version="1.1" id="L4" width="40px" height="40px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0">
+                    <circle fill="#547fce" stroke="none" cx="6" cy="50" r="6">
+                        <animate
+                        attributeName="opacity"
+                        dur="1s"
+                        values="0;1;0"
+                        repeatCount="indefinite"
+                        begin="0.1"/>    
+                    </circle>
+                    <circle fill="#547fce" stroke="none" cx="26" cy="50" r="6">
+                        <animate
+                        attributeName="opacity"
+                        dur="1s"
+                        values="0;1;0"
+                        repeatCount="indefinite" 
+                        begin="0.2"/>       
+                    </circle>
+                    <circle fill="#547fce" stroke="none" cx="46" cy="50" r="6">
+                        <animate
+                        attributeName="opacity"
+                        dur="1s"
+                        values="0;1;0"
+                        repeatCount="indefinite" 
+                        begin="0.3"/>     
+                     </circle>
+                </svg>
             <button id="submit">
                 <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#567fcd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
             </button>
