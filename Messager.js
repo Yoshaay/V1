@@ -101,7 +101,7 @@ class Messager extends HTMLElement {
         if(message === "clearArray")
         {
             this.clearArray(this);
-            fetch('saveData.php', {
+            fetch('https://schmalgsicht.de/wp-content/plugins/SG_Message/saveData.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ class Messager extends HTMLElement {
                 rel.lastmess = message;
                 
                 // Daten senden mit fetch
-                fetch('saveData.php', {
+                fetch('https://schmalgsicht.de/wp-content/plugins/SG_Message/saveData.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

@@ -13,7 +13,7 @@
         let displayedItems = new Set();
 
         function fetchAndDisplayData() {
-            fetch('getData.php')
+            fetch('https://schmalgsicht.de/wp-content/plugins/SG_Message/getData.php')
                 .then(response => response.json())
                 .then(data => {
                     if (Array.isArray(data)) {
