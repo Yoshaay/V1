@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nachrichten-Output</title>
+</head>
+<body>
+    <h1>Empfangene Daten anzeigen</h1>
+    <div id="datenContainer"></div>
+
+    <script>
+        let displayedItems = new Set();
+
+        function fetchAndDisplayData() {
+            fetch('getData.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (Array.isArray(data)) {
+                        const datenContainer = document.getElementById('datenContainer');
+                        data.forEach(item => {
+                            if (!displayedItems.has(item)) {
+                                const p = document.createElement('p');
+                                p.textContent = item;
+                                datenContainer.appendChild(p);
+                                displayedItems.add(item);
+                            }
+                        });
+                    } else {
+                        console.error('Die abgerufenen Daten sind kein Array:', data);
+                    }
+                })
+                .catch(error => {
+                    console.error('Fehler beim Abrufen der Daten:', error);
+                });
+        }
+
+        // Initial fetch and display data
+        fetchAndDisplayData();
+        
+        // alle 10 Sekunden neue Daten abfragen
+        setInterval(fetchAndDisplayData, 10000); 
+    </script>
+</body>
+</html>
