@@ -173,6 +173,7 @@ class Messager extends HTMLElement {
         rel.textbox.placeholder = "";
         rel.textbox.classList.add('weg');
         
+        /*
         //Container schrumpfen
         rel.messagediv.style.minWidth = "10px";
         rel.messagediv.classList.add('schrumpf');
@@ -181,6 +182,7 @@ class Messager extends HTMLElement {
         rel.button.innerHTML = rel.sentSVG;
         rel.button.style.margin = "auto";
         rel.button.style.pointerEvents = "none";
+        */
         
         setTimeout(function() {
             rel.messagediv.classList.add('schrumpfback');
