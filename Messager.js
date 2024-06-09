@@ -8,6 +8,7 @@ class Messager extends HTMLElement {
     loading = null;
     messagearray = [];
     lastmess = "yoshy";
+    ph = "";
     sentSVG = `<svg version="1.1" id="L4" width="40px" height="40px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0">
     <circle fill="#547fce" stroke="none" cx="6" cy="50" r="6">
         <animate
@@ -70,19 +71,18 @@ class Messager extends HTMLElement {
         var screenWidth = window.innerWidth;
         console.log("Größe" + screenWidth);
         //Laptop
-        if (screenWidth >= 786) {
+        if (screenWidth >= 1000) {
             cssPath = 'https://schmalgsicht.de/wp-content/plugins/SG_Message/style.css';
             console.log("Groß");
-        }
-        //Tablet
-        else if (screenWidth > 360) {
-            cssPath = 'https://schmalgsicht.de/wp-content/plugins/SG_Message/style.css';
-            console.log("Mittel");
+            this.ph = "Deine Nachricht an Chris & Lena";
+            this.setPlaceholder(this.ph);
         }
         //Handy
         else {
-            cssPath = 'https://schmalgsicht.de/wp-content/plugins/SG_Message/style.css';
+            cssPath = 'https://schmalgsicht.de/wp-content/plugins/SG_Message/style_mobile.css';
             console.log("Klein");
+            this.ph = "Deine Nachricht";
+            this.setPlaceholder(this.ph);
         }
         
         const cssLink = document.createElement('link');
@@ -200,6 +200,10 @@ class Messager extends HTMLElement {
             //console.log("Fertig");
         }, 4000);
         
+    }
+
+    setPlaceholder(ph) {
+        this.textbox.placeholder = ph;
     }
     
     //Wird aufgerufen, wenn Component erstellt

@@ -1,12 +1,12 @@
 .messagebox {
 	margin: auto;
-	width: 50%;
+	width: 15rem;
 	display: flex;
 	flex-direction: row;
 	padding:1px;
 	border: 2px solid black;
 	min-height: 2.5rem;
-	min-width: 25rem;
+	min-width: 15rem; 
 	border-radius: 100px;
 	background-color: white;
 	transition: width .3s ease-in;
@@ -24,7 +24,7 @@
 	appearance: none;
 	text-align: center;
 	flex-grow: 2;
-	font-size: 1.2rem;
+	font-size: 0.8rem;
 	font-family: "Poppins", sans-serif;
 	font-weight: 300;
 	font-style: normal;

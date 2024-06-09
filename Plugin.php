@@ -2,14 +2,14 @@
 	/*
 	Plugin Name: SchmalMessage
 	Description: Hörende schicken uns Nachrichten und Chris & Lena lesen diese vor
-	Version: 1.1.3
+	Version: 1.2.5
 	Author: Yoshy
 	*/
 	
 	//Shortcode
 	function message_shortcode() {
 	ob_start(); ?>
-			<div class="message">
+			<div class="messageclass">
 				<message-send></message-send>
 			</div>
 <?php
@@ -21,7 +21,7 @@
 	
 	function message_script() {
 		//Web-Component
-		wp_enqueue_script('message', plugin_dir_url(__FILE__) . 'Messager.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('messageclass', plugin_dir_url(__FILE__) . 'Messager.js', array('jquery'), '1.0', true);
 		
 		//wp_enqueue_script('icecast-stream-player', plugin_dir_url(__FILE__) . 'icecast-stream.js', array('jquery'), '1.0', true);
 	}
